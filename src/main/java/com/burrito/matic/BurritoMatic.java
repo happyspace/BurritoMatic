@@ -1,22 +1,5 @@
 package com.burrito.matic;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import jline.console.ConsoleReader;
-
 import com.burrito.matic.inventory.Ingredient;
 import com.burrito.matic.inventory.IngredientType;
 import com.burrito.matic.order.Order;
@@ -26,11 +9,19 @@ import com.burrito.matic.order.Orderable;
 import com.burrito.matic.product.BurritoProduct;
 import com.burrito.matic.product.Product;
 import com.burrito.matic.product.ProductCategory;
+import jline.console.ConsoleReader;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class BurritoMatic 
 {
-	private static final String PROMPT = "Borrito Matic> ";
+	private static final String PROMPT = "Burrito Matic> ";
 	
 	private static final String FIRST_LETTER_REGEX = "^([a-zA-Z].*)$";
 	private static final String FIRST_NUMBER_REGEX = "^([0-9].*)$";
@@ -67,7 +58,7 @@ public class BurritoMatic
 		out.println("To create a tasty burrito please follow the directions on the screen.");
 		out.println("");
 		
-		out.println("Please choose a burrito by entering the number preceeding the burrito's name. ");
+		out.println("Please choose a burrito by entering the number preceding the burrito's name. ");
 		
 		out.println(currentMenu.getMenu(currentOrderUpdate).createDisplay());
 		out.flush();
