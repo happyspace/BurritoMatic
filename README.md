@@ -6,8 +6,10 @@ A model burrito restaurant staffed by robots.
 1. Clone this repository.
 2. from a console cd into repository directory.
 3. run Maven install
-    mvn install
+
 4. run Maven exec:java
+
+    mvn clean install
     mvn exec:java
 
 You should see the following prompt.
