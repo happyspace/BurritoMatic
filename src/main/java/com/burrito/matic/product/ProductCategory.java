@@ -3,7 +3,7 @@ package com.burrito.matic.product;
 import com.burrito.matic.order.Orderable;
 
 /**
- * Defines a type of product, for example Borrito, Soda or Dessert. 
+ * Defines a type of product, for example Burrito, Soda or Dessert.
  * @author ewarner
  *
  */

@@ -1,25 +1,22 @@
 package com.burrito.matic.product;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-
+import com.burrito.matic.inventory.Ingredient;
+import com.burrito.matic.inventory.IngredientType;
 import org.easymock.IAnswer;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.burrito.matic.inventory.Ingredient;
-import com.burrito.matic.inventory.IngredientType;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class BorritoProductRuleTest extends RuleUtilsTest {
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.replay;
+import static org.junit.Assert.assertEquals;
+
+public class BurritoProductRuleTest extends RuleUtilsTest {
 	
 	AlaCarteRule alaCarteRule = new AlaCarteRule();
 	

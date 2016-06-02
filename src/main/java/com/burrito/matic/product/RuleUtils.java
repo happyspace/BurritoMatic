@@ -32,7 +32,7 @@ public class RuleUtils {
 	/**
 	 * Expression defining a valid two ingredient burrito.
 	 */
-	protected static final String TWO_VALIDATE_BORRITO = "meat == 1 and salsa == 1 and toppings == 0 and base <= 2";
+	protected static final String TWO_VALIDATE_BURRITO = "meat == 1 and salsa == 1 and toppings == 0 and base <= 2";
 
 	/**
 	 * Expression defining a valid three ingredient burrito.
@@ -81,8 +81,8 @@ public class RuleUtils {
 	/**
 	 * Evaluate a burrito for completeness against a two ingredient rule.
 	 * 
-	 * @param product
-	 * @return
+	 * @param product the burrito to be evaluated
+	 * @return if the burrito is complete
 	 */
 	protected static boolean isCompleteTwoIngredient(BurritoProduct product) {
 		Map<IngredientType, List<Ingredient>> ingredients = product
@@ -101,18 +101,17 @@ public class RuleUtils {
 		jc.set("meat", x);
 		jc.set("salsa", y);
 
-		Boolean c = (Boolean) expression.evaluate(jc);
-		return c;
+		return (Boolean) expression.evaluate(jc);
 	}
 
 	/**
 	 * Evaluate an ingredient against a BurritoProduct to determine if the
 	 * Burrito would be valid after the ingredient is added.
 	 * 
-	 * @param product
-	 * @param ingredient
-	 * @param expression
-	 * @return
+	 * @param product the product to be evaluated
+	 * @param ingredient the ingredient to be added
+	 * @param expression the expression defining a valid burrito
+	 * @return if the ingredient is valid
 	 */
 	protected static boolean isValidIngredient(final BurritoProduct product,
 			final Ingredient ingredient, String expression) {
@@ -145,18 +144,18 @@ public class RuleUtils {
 	}
 
 	/**
-	 * Evaluate a borrito product against an expression to determine if the 
+	 * Evaluate a burrito product against an expression to determine if the
 	 * product is valid.
 	 * 
-	 * @param product
-	 * @param expression
-	 * @return
+	 * @param product the product to be evaluated
+	 * @param expression the expression to be used for evaluation
+	 * @return is the product is valid
 	 */
-	protected static boolean isValidBorrito(final BurritoProduct product,
+	protected static boolean isValidBurrito(final BurritoProduct product,
 			String expression) {
 		boolean valid = false;
 		
-		if(isInitilized(product)) {
+		if(isInitialized(product)) {
 			Map<IngredientType, List<Ingredient>> ingredients = product
 					.getBurritoIngredients();
 
@@ -187,19 +186,19 @@ public class RuleUtils {
 
 
 	/**
-	 * Calculate the number of time an ingredient occurs within a list of
-	 * ingredients.
-	 * 
-	 * @param ingredients
-	 * @param source
-	 * @param target
-	 * @return count of ingredient
+     * Support validation for addition ingredients.
+     * Count number of ingredients, add one if the target ingredient is the same as the source ingredient.
+     *
+	 * @param ingredients the map of ingredients in a product
+	 * @param source an ingredient type
+	 * @param target the ingredient to be added
+	 * @return count of ingredients
 	 */
 	private static int ingredientCount(
 			final Map<IngredientType, List<Ingredient>> ingredients,
 			final IngredientType source, final IngredientType target) {
-		int count = 0;
-		count = (ingredients.get(source) != null) ? ingredients.get(source)
+
+		int count = (ingredients.get(source) != null) ? ingredients.get(source)
 				.size() : 0;
 		if (source.equals(target)) {
 			count++;
@@ -238,17 +237,16 @@ public class RuleUtils {
 		jc.set("salsa", y);
 		jc.set("toppings", z);
 
-		Boolean c = (Boolean) expression.evaluate(jc);
-		return c;
+		return (Boolean) expression.evaluate(jc);
 	}
 	
 	/**
-	 * Check that a borrito has been initized (has a bowl or tortilla).
+	 * Check that a burrito has been initialized (has a bowl or tortilla).
 	 * 
 	 * @param product
 	 * @return
 	 */
-	protected static boolean isInitilized(final BurritoProduct product) {
+	protected static boolean isInitialized(final BurritoProduct product) {
 		Map<IngredientType, List<Ingredient>> ingredients = product
 				.getBurritoIngredients();
 		
@@ -283,7 +281,7 @@ public class RuleUtils {
 
 	/**
 	 * Based on the product constraint and the ingredient could the 
-	 * ingredient serve as a base for the borrito.
+	 * ingredient serve as a base for the burrito.
 	 * @param product
 	 * @param ingredient
 	 * @return

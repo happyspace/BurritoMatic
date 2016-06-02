@@ -1,25 +1,21 @@
 package com.burrito.matic.product;
 
-import static org.easymock.EasyMock.createNiceMock;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-
+import com.burrito.matic.inventory.Ingredient;
+import com.burrito.matic.inventory.IngredientType;
 import org.easymock.EasyMock;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.burrito.matic.inventory.Ingredient;
-import com.burrito.matic.inventory.IngredientType;
-import com.burrito.matic.product.BurritoProduct;
-import com.burrito.matic.product.RuleUtils;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+
+import static org.easymock.EasyMock.createNiceMock;
+import static org.easymock.EasyMock.expect;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 
 @RunWith(JUnit4.class)
@@ -205,7 +201,7 @@ public class RuleUtilsTest {
 	}
 	
 	@Test
-	public void isValidBorrito() {
+	public void isValidBurrito() {
 		expect(burritoProduct.getBurritoIngredients()).andReturn(ingredients).anyTimes();
 		expect(burritoProduct.isBowl()).andReturn(false);
 		EasyMock.replay(burritoProduct, wrap, meat, salsa, topping);
@@ -214,11 +210,11 @@ public class RuleUtilsTest {
 		this.add(meat);
 		this.add(salsa);		
 		// two ingredient
-		boolean b2 = RuleUtils.isValidBorrito(burritoProduct, RuleUtils.TWO_VALIDATE_BORRITO);
+		boolean b2 = RuleUtils.isValidBurrito(burritoProduct, RuleUtils.TWO_VALIDATE_BURRITO);
 		assertTrue(b2);
 		// three ingredient
 		this.add(topping);
-		boolean b3 = RuleUtils.isValidBorrito(burritoProduct, RuleUtils.THREE_VALIDATE_BURRITO);
+		boolean b3 = RuleUtils.isValidBurrito(burritoProduct, RuleUtils.THREE_VALIDATE_BURRITO);
 		assertTrue(b3);
 		
 	}

@@ -1,9 +1,7 @@
 package com.burrito.matic.product;
 
-import net.jcip.annotations.NotThreadSafe;
-
-import com.burrito.matic.exception.ProductException;
 import com.burrito.matic.inventory.Ingredient;
+import net.jcip.annotations.NotThreadSafe;
 
 /**
  * Encapsulates the rules for a two ingredient burrito product.
@@ -17,7 +15,7 @@ public class TwoIngredientRule extends BurritoProductRule implements ProductRule
 
 	@Override
 	public boolean validateProduct(BurritoProduct product) {
-		return RuleUtils.isValidBorrito(product, RuleUtils.TWO_VALIDATE_BORRITO);
+		return RuleUtils.isValidBurrito(product, RuleUtils.TWO_VALIDATE_BURRITO);
 	}
 
 

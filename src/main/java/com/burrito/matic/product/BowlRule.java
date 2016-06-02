@@ -39,6 +39,6 @@ public class BowlRule extends BurritoProductRule implements ProductRule {
 
 	@Override
 	public boolean validateProduct(BurritoProduct product) {
-		return RuleUtils.isValidBorrito(product, RuleUtils.TWO_VALIDATE_BORRITO);
+		return RuleUtils.isValidBurrito(product, RuleUtils.TWO_VALIDATE_BURRITO);
 	}
 }

@@ -1,19 +1,13 @@
 package com.burrito.matic.product;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import net.jcip.annotations.NotThreadSafe;
-
 import com.burrito.matic.exception.ProductException;
 import com.burrito.matic.inventory.Ingredient;
 import com.burrito.matic.inventory.IngredientType;
+import net.jcip.annotations.NotThreadSafe;
+
+import java.math.BigDecimal;
+import java.util.*;
+import java.util.Map.Entry;
 
 
 /**
@@ -192,7 +186,7 @@ public class BurritoProduct extends AbstractProduct {
 	}
 	
 	/**
-	 * Returns the product rule for this borrito. 
+	 * Returns the product rule for this burrito.
 	 * @return
 	 */
 	public ProductRule getProductRule() {

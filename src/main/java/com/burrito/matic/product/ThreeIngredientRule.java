@@ -16,7 +16,7 @@ public class ThreeIngredientRule extends BurritoProductRule implements ProductRu
 
 	@Override
 	public boolean validateProduct(BurritoProduct product) {
-		return RuleUtils.isValidBorrito(product, RuleUtils.THREE_VALIDATE_BURRITO);
+		return RuleUtils.isValidBurrito(product, RuleUtils.THREE_VALIDATE_BURRITO);
 	}
 
 	@Override
