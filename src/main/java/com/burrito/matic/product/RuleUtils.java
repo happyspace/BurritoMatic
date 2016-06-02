@@ -243,16 +243,15 @@ public class RuleUtils {
 	/**
 	 * Check that a burrito has been initialized (has a bowl or tortilla).
 	 * 
-	 * @param product
-	 * @return
+	 * @param product product to be evaluated
+	 * @return if the product has been initialized
 	 */
 	protected static boolean isInitialized(final BurritoProduct product) {
 		Map<IngredientType, List<Ingredient>> ingredients = product
 				.getBurritoIngredients();
-		
-		boolean valid = false;
+
 		int bowls = 0;
-		int wrapps = 0;
+		int wraps = 0;
 		List<Ingredient> list = ingredients.get(IngredientType.BASE);
 		if (list != null) {
 			for (Ingredient ing : list) {
@@ -260,7 +259,7 @@ public class RuleUtils {
 					bowls++;
 				}
 				if (ing.isWrap()) {
-					wrapps++;
+					wraps++;
 				}
 			}
 		}
@@ -272,19 +271,17 @@ public class RuleUtils {
 		JexlContext jc = new MapContext();
 
 		jc.set("bowl", bowls);
-		jc.set("wrap", wrapps);
-
-		valid = (Boolean) expression.evaluate(jc);
+		jc.set("wrap", wraps);
 		
-		return valid;
+		return (Boolean) expression.evaluate(jc);
 	}
 
 	/**
 	 * Based on the product constraint and the ingredient could the 
 	 * ingredient serve as a base for the burrito.
-	 * @param product
-	 * @param ingredient
-	 * @return
+	 * @param product product to be evaluated
+	 * @param ingredient ingredient to be evaluated
+	 * @return if the ingredient can be an initial ingredient
 	 */
 	protected static boolean isValidInitialIngredient(BurritoProduct product,
 			Ingredient ingredient) {
@@ -294,7 +291,7 @@ public class RuleUtils {
 					.getBurritoIngredients();
 
 			int bowls = 0;
-			int wrapps = 0;
+			int wraps = 0;
 			List<Ingredient> list = ingredients.get(IngredientType.BASE);
 			if (list != null) {
 				for (Ingredient ing : list) {
@@ -302,7 +299,7 @@ public class RuleUtils {
 						bowls++;
 					}
 					if (ing.isWrap()) {
-						wrapps++;
+						wraps++;
 					}
 				}
 			}
@@ -310,7 +307,7 @@ public class RuleUtils {
 			if (ingredient.isBowl()) {
 				bowls++;
 			} else {
-				wrapps++;
+				wraps++;
 			}
 
 			JexlEngine jexl = new JexlEngine();
@@ -320,7 +317,7 @@ public class RuleUtils {
 			JexlContext jc = new MapContext();
 
 			jc.set("bowl", bowls);
-			jc.set("wrap", wrapps);
+			jc.set("wrap", wraps);
 
 			valid = (Boolean) expression.evaluate(jc);
 

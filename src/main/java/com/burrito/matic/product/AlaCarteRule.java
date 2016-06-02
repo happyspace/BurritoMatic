@@ -1,11 +1,7 @@
 package com.burrito.matic.product;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import net.jcip.annotations.NotThreadSafe;
-
 import com.burrito.matic.inventory.Ingredient;
+import net.jcip.annotations.NotThreadSafe;
 
 /**
  * Encapsulates the rules for an A la CarteRule burrito product.
@@ -20,7 +16,7 @@ public class AlaCarteRule extends BurritoProductRule implements ProductRule {
 	public boolean validateProduct(BurritoProduct product) {
 		boolean valid = false;		
 		// has been initialized
-		if(RuleUtils.isInitilized(product)) {
+		if(RuleUtils.isInitialized(product)) {
 			// is sufficient
 			if(this.isSufficient(product)) {
 				int s = product.getBurritoIngredientsAsList().size();
