@@ -1,21 +1,5 @@
 package com.burrito.matic;
 
-import static org.junit.Assert.*;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
 import com.burrito.matic.exception.OrderException;
 import com.burrito.matic.inventory.Ingredient;
 import com.burrito.matic.inventory.IngredientType;
@@ -25,6 +9,17 @@ import com.burrito.matic.order.OrderStatus;
 import com.burrito.matic.order.OrderUpdate;
 import com.burrito.matic.product.BurritoProduct;
 import com.burrito.matic.product.Product;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+
+import java.math.BigDecimal;
+import java.util.*;
+
+import static org.junit.Assert.*;
 
 @RunWith(JUnit4.class)
 public class OrderServiceImplTest {
@@ -84,7 +79,7 @@ public class OrderServiceImplTest {
 		List<Ingredient> list = inventoryService
 				.ingredientsForType(IngredientType.MEAT);
 
-		this.excerciseList(values, list, IngredientType.MEAT);
+		this.exerciseList(values, list, IngredientType.MEAT);
 	}
 
 
@@ -100,7 +95,7 @@ public class OrderServiceImplTest {
 		List<Ingredient> list = inventoryService
 				.ingredientsForType(IngredientType.SALSA);
 
-		this.excerciseList(values, list, IngredientType.SALSA);
+		this.exerciseList(values, list, IngredientType.SALSA);
 	}
 
 	@Test
@@ -114,11 +109,11 @@ public class OrderServiceImplTest {
 		List<Ingredient> list = inventoryService
 				.ingredientsForType(IngredientType.TOPPINGS);
 
-		this.excerciseList(values, list, IngredientType.TOPPINGS);
+		this.exerciseList(values, list, IngredientType.TOPPINGS);
 	}
 	
-	private void excerciseList(Collection<BurritoProduct> values,
-			List<Ingredient> list, IngredientType ingredientType) {
+	private void exerciseList(Collection<BurritoProduct> values,
+                              List<Ingredient> list, IngredientType ingredientType) {
 		for (Ingredient ingredient : list) {
 			ArrayList<OrderUpdate> orderUpdates = new ArrayList<OrderUpdate>(
 					values.size());
